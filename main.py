@@ -8,7 +8,7 @@ except ImportError:
 import json
 import os
 
-config=json.load(open('./data/config.json'))
+config=json.load(open('/data/config.json'))
 st.set_page_config(page_title=config['title'], page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 st.title(config['subtitle'])
@@ -22,7 +22,7 @@ if "messages" not in st.session_state.keys():
 def load_data():
     with st.spinner(text=config['spinner']):
         system_prompt=config['prompt']
-        reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
+        reader = SimpleDirectoryReader(input_dir="/data/files", recursive=True)
         docs = reader.load_data()
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt=system_prompt))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
