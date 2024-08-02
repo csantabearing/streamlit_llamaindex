@@ -1,10 +1,7 @@
 import streamlit as st
 import openai
 from llama_index.llms.openai import OpenAI
-try:
-  from llama_index import VectorStoreIndex, ServiceContext, Document, SimpleDirectoryReader
-except ImportError:
-  from llama_index.core import VectorStoreIndex, ServiceContext, Document, SimpleDirectoryReader
+from llama_index.core import VectorStoreIndex, ServiceContext, Document, SimpleDirectoryReader
 import json
 import os
 
